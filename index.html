@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find affordable homemade meals from local home chefs.">
+  <title>Bhoj Ki Khoj | Smart Meal Finder</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">🍲 Bhoj Ki Khoj</a>
+    <span class="tagline">Ghar jaisa khana, aapke paas</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">TEAM JUGAADU · AWS TRACK</p>
+      <h1>Find homemade meals near you</h1>
+      <p>Discover affordable meals from local home chefs.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="filters-title">
+      <h2 id="filters-title">Find your meal</h2>
+      <form id="meal-search-form">
+        <div class="field field-wide">
+          <label for="meal-query">Search by meal or chef</label>
+          <input id="meal-query" type="search" placeholder="Try dal, roti, thali..." autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="max-price">Maximum price (₹)</label>
+          <input id="max-price" type="number" min="0" step="1" placeholder="e.g. 100">
+        </div>
+        <div class="field">
+          <label for="food-type">Food preference</label>
+          <select id="food-type">
+            <option value="">All types</option>
+            <option value="veg">Vegetarian</option>
+            <option value="non_veg">Non-vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="jain">Jain</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="meal-type">Meal time</label>
+          <select id="meal-type">
+            <option value="">All meals</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snacks">Snacks</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="max-distance">Maximum distance</label>
+          <select id="max-distance">
+            <option value="">Any distance</option>
+            <option value="2">Within 2 km</option>
+            <option value="3">Within 3 km</option>
+            <option value="5">Within 5 km</option>
+            <option value="10">Within 10 km</option>
+          </select>
+        </div>
+        <div class="actions field-wide">
+          <button class="button button-primary" type="submit">Search meals</button>
+          <button class="button button-secondary" type="button" id="use-location">Use my location</button>
+          <button class="button button-quiet" type="reset" id="clear-filters">Clear filters</button>
+        </div>
+      </form>
+      <p id="location-status" class="muted" aria-live="polite"></p>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-title">
+      <div class="results-heading">
+        <h2 id="results-title">Available homemade meals</h2>
+        <span id="result-count" class="muted"></span>
+      </div>
+      <p id="meal-status" class="status" role="status" aria-live="polite">Connecting to the meal database…</p>
+      <div id="meal-results" class="meal-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Bhoj Ki Khoj · Team Jugaadu</p>
+  </footer>
+
+  <!-- Supabase JS v2 must load before our scripts. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/meal-finder.js"></script>
+</body>
+</html>
